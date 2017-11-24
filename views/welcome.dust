@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Manager</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <p>To begin, give your library a name</p>
+    <form method="post">
+        <input type="text" name="name" id="name"/>
+        <input type="submit">
+    </form>
+</body>
+</html>
