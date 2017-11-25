@@ -1,16 +1,13 @@
-var express = require('express');
-var db = require('../db/query');
-var router = express.Router();
+const Router = require('express-promise-router');
+const db = require('../db/query');
+const router = Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    db.query("SELECT (library_name) FROM users WHERE cookie = $1;", [req.cookies['sessionId']], function (err,data) {
-        if (err) {
-            console.error(err);
-        }
-        var library = data.rows[0].library_name;
-        res.render('index', { title: 'Library Manager', library: library });
-    });
+router.get('/', async (req, res, next) => {
+    /*const { rows } = await db.query("SELECT (library_name) FROM users WHERE cookie = $1;", [req.cookies['sessionId']]);
+    const library = rows[0].library_name;
+    console.log(library);*/
+    res.render('index', { title: 'Library Manager', library: req.library });
 });
 
 module.exports = router;

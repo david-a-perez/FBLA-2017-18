@@ -8,7 +8,9 @@
     <h1>Welcome to <strong>Library Manager</strong></h1>
     <p>To begin, give your library a name</p>
     <form method="post">
-        <input type="text" name="name" id="name"/>
+        <input placeholder="Name of your library" type="text" name="name" id="name"/><br>
+        <input placeholder="Days teachers can checkout books" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
+        <input placeholder="Days students can checkout books" type="text" name="student_checkout_length" id="student_checkout_length"><br>
         <input type="submit">
     </form>
 </body>
