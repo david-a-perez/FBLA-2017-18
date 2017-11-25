@@ -46,7 +46,7 @@ router.use(async (req, res, next) => {
 
 
 
-    if (row.library_name === null || row.teacher_checkout_length === null || row.student_checkout_length === null) {
+    if (row.library_name === null || row.teacher_checkout_length === null || row.student_checkout_length === null || row.library_name === "") {
         // User needs to set name and checkout lengths
         // If the user is not going to welcome page redirect the user to /welcome
         if (req.path !== '/welcome') {

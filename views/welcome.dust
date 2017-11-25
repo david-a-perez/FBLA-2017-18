@@ -8,9 +8,12 @@
     <h1>Welcome to <strong>Library Manager</strong></h1>
     <p>To begin, give your library a name</p>
     <form method="post">
-        <input placeholder="Name of your library" type="text" name="name" id="name"/><br>
-        <input placeholder="Days teachers can checkout books" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
-        <input placeholder="Days students can checkout books" type="text" name="student_checkout_length" id="student_checkout_length"><br>
+        Name:<br>
+        <input placeholder="Name of your library" type="text" name="name" id="name" required/><br>
+        Days teachers can checkout books<br>
+        <input placeholder="Default: 7" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
+        Days students can checkout books<br>
+        <input placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
         <input type="submit">
     </form>
 </body>

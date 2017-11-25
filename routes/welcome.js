@@ -9,11 +9,10 @@ router.get('/', function(req, res, next) {
 
 /* POST welcome page. */
 router.post('/', async (req, res, next) => {
-    // Save library name to database
-    // TODO: actually save library name to database (req.body.name)
-    //await db.query("INSERT INTO users VALUES ($1,$2,7,7);", [req.cookies['sessionId'], req.body.name]);
+    // Save library name, teacher checkout length, and student checkout length to database
+    // If length is not defined by user, use default of 7 days
     await db.query("UPDATE users SET library_name = $2, teacher_checkout_length = $3, student_checkout_length = $4 WHERE cookie = $1;",
-        [req.sessionId, req.body.name, 7, 7]);
+        [req.sessionId, req.body.name, req.body.teacher_checkout_length || 7, req.body.student_checkout_length || 7]);
     res.redirect('/');
 });
 
