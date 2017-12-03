@@ -9,8 +9,7 @@
     <h1>{title}</h1>
     <p>Welcome to {title}</p>
     <p>Welcome to {library}</p>
-    <a href="/books">Books</a>
-
+    
     {>"bootstrapScripts"/}
 </body>
 </html>
