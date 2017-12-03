@@ -12,8 +12,14 @@ const mountRoutes = require('./routes/mountRoutes');
 
 const app = express();
 
+const adaroOptions = {
+    helpers: [
+        "dustjs-helpers"
+    ]
+};
+
 // view engine setup
-app.engine('dust', adaro.dust());
+app.engine('dust', adaro.dust(adaroOptions));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'dust');
 

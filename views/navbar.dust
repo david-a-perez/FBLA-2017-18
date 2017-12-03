@@ -6,13 +6,19 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/books">Books</a>
-            </li>
-            <li class="nav-item dropdown">
+            {@eq key=currentPage value="index"}
+            {>"navbarItem" href="/" display="Home" active="true"/}
+            {:else}
+            {>"navbarItem" href="/" display="Home"/}
+            {/eq}
+
+            {@eq key=currentPage value="books"}
+            {>"navbarItem" href="/books" display="Books" active="true"/}
+            {:else}
+            {>"navbarItem" href="/books" display="Books"/}
+            {/eq}
+
+            {!<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown
                 </a>
@@ -25,7 +31,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+            </li>!}
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
