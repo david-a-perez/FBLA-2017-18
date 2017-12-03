@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead" title=title/}
+</head>
+<body>
+    {>"navbar" currentPage="booksNew"/}
+    <h1>Create a new book</h1>
+    <form method="post">
+        Name:<br>
+        <input placeholder="Name of your book" type="text" name="name" id="name" required/><br>
+        <input type="submit">
+    </form>
+    {>"bootstrapScripts"/}
+</body>
+</html>

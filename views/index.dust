@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{title}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<html lang="en">
+<head>
+    {>"htmlHead" title=title/}
+</head>
+<body>
+    {>"navbar" currentPage="index"/}
+
     <h1>{title}</h1>
     <p>Welcome to {title}</p>
     <p>Welcome to {library}</p>
-  </body>
+    <a href="/books">Books</a>
+
+    {>"bootstrapScripts"/}
+</body>
 </html>

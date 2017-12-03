@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead" title=title/}
+</head>
+<body>
+    {>"navbar" currentPage="books"/}
+    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <a href="/books/new">Add new book</a>
+    <br>
+    {?books}
+    <table>
+        <thead>
+            <tr>
+                <th>Names</th>
+                <th>Cookie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {#books}
+            <tr>
+                <td>{name}</td>
+                <td>{user_cookie}</td>
+            </tr>
+        {/books}
+        </tbody>
+    </table>
+    {:else}
+    Add a book first
+    {/books}
+    {>"bootstrapScripts"/}
+</body>
+</html>

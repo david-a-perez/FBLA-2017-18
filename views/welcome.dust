@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Library Manager</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    {>"htmlHead" title=title/}
 </head>
 <body>
+    {>"navbar" currentPage="welcome"/}
+
     <h1>Welcome to <strong>Library Manager</strong></h1>
     <p>To begin, give your library a name</p>
     <form method="post">
@@ -16,5 +17,7 @@
         <input placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
         <input type="submit">
     </form>
+
+    {>"bootstrapScripts"/}
 </body>
 </html>
