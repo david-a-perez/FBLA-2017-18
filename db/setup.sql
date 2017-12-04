@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, books, people, checked_out_books CASCADE;
+DROP TABLE IF EXISTS users, books, people, patrons, checked_out_books CASCADE;
 DROP TYPE IF EXISTS role CASCADE;
 
 CREATE TYPE role AS ENUM ('teacher','student');
@@ -18,7 +18,7 @@ CREATE TABLE books (
     user_cookie text REFERENCES users ON DELETE CASCADE
 );
 
-CREATE TABLE people (
+CREATE TABLE patrons (
     id serial PRIMARY KEY,
     name text,
     role role,
@@ -28,7 +28,7 @@ CREATE TABLE people (
 CREATE TABLE checked_out_books ( -- will be renamed to something that has isbn or similar meaning
     id serial PRIMARY KEY,
     book serial REFERENCES books ON DELETE CASCADE,
-    person serial REFERENCES people ON DELETE CASCADE, -- change to SET NULL so that table will not delete data on
+    patron serial REFERENCES patrons ON DELETE CASCADE, -- change to SET NULL so that table will not delete data on
     checkout_timestamp timestamp,
     user_cookie text REFERENCES users ON DELETE CASCADE
 );
