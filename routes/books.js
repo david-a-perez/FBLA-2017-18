@@ -5,7 +5,7 @@ const router = Router();
 /* GET /books */
 router.get('/', async (req, res, next) => {
     const sqlResult = await db.query('SELECT * FROM books WHERE user_cookie = $1', [req.sessionId]);
-    res.render('books', {library: req.librarym, books: sqlResult.rows});
+    res.render('books', {title: 'Library Manager', library: req.library, books: sqlResult.rows});
 });
 
 /* GET /books/new */

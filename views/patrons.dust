@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead"/}
+</head>
+<body>
+{>"navbar" currentPage="patrons"/}
+<h1>Welcome to <strong>Library Manager</strong></h1>
+<a href="/patrons/new">Add new patron</a>
+<br>
+{?patrons}
+<table>
+    <thead>
+    <tr>
+        <th>Names</th>
+        <th>Cookie</th>
+    </tr>
+    </thead>
+    <tbody>
+    {#patrons}
+    <tr>
+        <td>{name}</td>
+        <td>{user_cookie}</td>
+    </tr>
+    {/patrons}
+    </tbody>
+</table>
+{:else}
+Add a patron first
+{/patrons}
+{>"bootstrapScripts"/}
+</body>
+</html>
