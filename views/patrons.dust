@@ -13,14 +13,14 @@
     <thead>
     <tr>
         <th>Names</th>
-        <th>Cookie</th>
+        <th>Role</th>
     </tr>
     </thead>
     <tbody>
     {#patrons}
     <tr>
         <td>{name}</td>
-        <td>{user_cookie}</td>
+        <td>{role}</td>
     </tr>
     {/patrons}
     </tbody>

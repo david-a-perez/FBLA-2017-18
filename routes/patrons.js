@@ -17,7 +17,7 @@ router.get('/new', (req, res, next) => {
 /* POST /patrons/new */
 router.post('/new', async (req, res, next) => {
     //console.log('name: ' + req.body.name);
-    await db.query('INSERT INTO patrons(user_cookie, name) VALUES ($1, $2);', [req.sessionId, req.body.name]);
+    await db.query('INSERT INTO patrons(user_cookie, name, role) VALUES ($1, $2, $3);', [req.sessionId, req.body.name, req.body.role]);
     res.redirect('/patrons');
 });
 
