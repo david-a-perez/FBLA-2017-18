@@ -1,5 +1,5 @@
 -- Delete old tables
-DROP TABLE IF EXISTS users, books, people, patrons, checked_out_books CASCADE;
+DROP TABLE IF EXISTS users, books, people, patrons, book_copies CASCADE;
 DROP TYPE IF EXISTS role CASCADE;
 
 -- Create ENUMs
