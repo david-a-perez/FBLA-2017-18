@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
 
 /* GET /books/new */
 router.get('/new', (req, res, next) => {
-    res.render('booksNew');
+    res.render('booksNew', {title: 'Library Manager', library: req.library});
 });
 
 /* POST /books/new */

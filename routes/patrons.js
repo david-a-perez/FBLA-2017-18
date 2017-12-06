@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
 
 /* GET /patrons/new */
 router.get('/new', (req, res, next) => {
-    res.render('patronsNew');
+    res.render('patronsNew', {title: 'Library Manager', library: req.library});
 });
 
 /* POST /patrons/new */

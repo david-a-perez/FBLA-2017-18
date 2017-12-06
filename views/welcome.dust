@@ -5,19 +5,21 @@
 </head>
 <body>
     {>"navbar" currentPage="welcome"/}
-
+    <div class="container">
     <h1>Welcome to <strong>Library Manager</strong></h1>
     <p>To begin, give your library a name</p>
     <form method="post">
-        Name:<br>
-        <input placeholder="Name of your library" type="text" name="name" id="name" required/><br>
-        Days teachers can checkout books<br>
-        <input placeholder="Default: 7" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
-        Days students can checkout books<br>
-        <input placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
-        <input type="submit">
+        <div class="form-group">
+            <label for="name">Name:</label><br>
+            <input class="form-control" placeholder="Name of your library" type="text" name="name" id="name" required/><br>
+            <label for="teacher_checkout_length">Days teachers can checkout books</label><br>
+            <input class="form-control" placeholder="Default: 7" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
+            <label for="student_checkout_length">Days students can checkout books</label><br>
+            <input class="form-control" placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
+            <input class="form-control" type="submit">
+        </div>
     </form>
-
+    </div>
     {>"bootstrapScripts"/}
 </body>
 </html>

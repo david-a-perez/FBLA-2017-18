@@ -5,6 +5,7 @@
 </head>
 <body>
     {>"navbar" currentPage="books"/}
+    <div class="container">
     <h1>Welcome to <strong>Library Manager</strong></h1>
     <p>Welcome to {library}</p>
     <a href="/books/new">Add new book</a>
@@ -29,6 +30,7 @@
     {:else}
     Add a book first
     {/books}
+    </div>
     {>"bootstrapScripts"/}
 </body>
 </html>

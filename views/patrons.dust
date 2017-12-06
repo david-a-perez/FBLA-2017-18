@@ -5,6 +5,7 @@
 </head>
 <body>
 {>"navbar" currentPage="patrons"/}
+<div class="container">
 <h1>Welcome to <strong>Library Manager</strong></h1>
 <a href="/patrons/new">Add new patron</a>
 <br>
@@ -28,6 +29,7 @@
 {:else}
 Add a patron first
 {/patrons}
+</div>
 {>"bootstrapScripts"/}
 </body>
 </html>
