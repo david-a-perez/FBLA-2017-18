@@ -4,8 +4,8 @@ const router = Router();
 
 /* GET /patrons */
 router.get('/', async (req, res, next) => {
-    //const sqlResult = await db.query('SELECT * FROM patrons WHERE user_cookie = $1', [req.sessionId]);
-    const sqlResult = {};
+    const sqlResult = await db.query('SELECT * FROM patrons WHERE user_cookie = $1', [req.sessionId]);
+    //const sqlResult = {};
     res.render('patrons', {title: 'Library Manager', library: req.library, patrons: sqlResult.rows});
 });
 
