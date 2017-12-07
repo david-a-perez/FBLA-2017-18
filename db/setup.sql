@@ -17,6 +17,7 @@ CREATE TABLE users (
 CREATE TABLE books (
     id serial PRIMARY KEY,
     name text,
+    author text,
     quantity integer CHECK (quantity > 0), -- will be removed
     user_cookie text REFERENCES users ON DELETE CASCADE
 );

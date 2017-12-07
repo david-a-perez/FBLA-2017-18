@@ -15,14 +15,14 @@
         <thead>
             <tr>
                 <th>Names</th>
-                <th>Cookie</th>
+                <th>Author</th>
             </tr>
         </thead>
         <tbody>
         {#books}
             <tr>
                 <td>{name}</td>
-                <td>{user_cookie}</td>
+                <td>{author}</td>
             </tr>
         {/books}
         </tbody>
