@@ -6,16 +6,44 @@
 <body>
     {>"navbar" currentPage="books"/}
     <div class="container">
-    <h1>Welcome to <strong>Library Manager</strong></h1>
-    <p>Welcome to {library}</p>
-    <a href="/books/new">Add new book</a>
-    <br>
-    {?books}
-    <table>
+        <h1>Welcome to <strong>Library Manager</strong></h1>
+        <p>Welcome to {library}</p>
+        <a href="/books/new">Add new book</a>
+        <br>
+        {?books}
+        <div class="row font-weight-bold">
+            <div class="col">Names</div>
+            <div class="col">Authors</div>
+            <div class="col">Actions</div>
+        </div>
+        {#books}
+        <div class="row table-row">
+            <div class="col">{name}</div>
+            <div class="col">{author}</div>
+            <div class="col actions">
+                <button onclick="$('#bookId{id}').children().first().load('/books/table/{id}');$(this).removeAttr('onclick')" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookId{id}" aria-expanded="false" aria-controls="bookId{id}">
+                    Show copies
+                </button>
+                <a href="/books/{id}" class="btn btn-primary">More</a>
+            </div>
+        </div>
+        <div id="bookId{id}" class="row collapse">
+            <div class="col">
+                Test Data
+            </div>
+        </div>
+        {/books}
+        {:else}
+        Add a book first
+        {/books}
+    </div>
+    {!
+        <table class="table">
         <thead>
             <tr>
                 <th>Names</th>
                 <th>Author</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +51,29 @@
             <tr>
                 <td>{name}</td>
                 <td>{author}</td>
+                <td>
+                    <!--<button class="table-loader btn btn-primary" type="button">Load copies</button>-->
+                    <!--<button class="table-loader btn btn-primary" type="button" data-toggle="collapse" data-target="$(this).parent().parent().next()" aria-expanded="false" aria-controls="$(this).parent().parent().next()">
+                        Button with data-target
+                    </button>
+                    <span class="oi oi-pencil"></span>-->
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookId{id}" aria-expanded="false" aria-controls="bookId{id}">
+                        Button with data-target
+                    </button>
+                    <span style="display: none;">123</span>
+                </td>
+            </tr>
+            <tr id="2bookId{id}" class="collapse">
+                <td colspan="3">Loading...</td>
             </tr>
         {/books}
         </tbody>
     </table>
     {:else}
     Add a book first
-    {/books}
-    </div>
+    {/books}!}
+
     {>"bootstrapScripts"/}
+    <script src="/javascripts/tableloader.js"></script>
 </body>
 </html>

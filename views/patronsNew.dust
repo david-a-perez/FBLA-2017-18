@@ -7,7 +7,7 @@
 {>"navbar" currentPage="patronsNew"/}
 
 <div class="container">
-<h1>Create a new patron</h1>
+    <h1>Create a new patron</h1>
     <form method="post">
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead" title=title/}
+</head>
+<body>
+{>"navbar" currentPage="books"/}
+<div class="container">
+    {#book}
+    <h4>{name}</h4>
+    <h6>by {author}</h6>
+    <form method="post" action="/books/{id}/new">
+        <div class="form-group row">
+            <label for="serial_num" class="col-sm-2 col-form-label">Add New Copy</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="serial_num" name="serial_num" placeholder="Serial Number">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Add New Copy</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    {/book}
+    {>"booksCopiesTables"/}
+
+</div>
+{>"bootstrapScripts"/}
+</body>
+</html>

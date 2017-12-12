@@ -1,0 +1,35 @@
+{?book_copies}
+<table class="table">
+    <thead>
+    <tr>
+        <th>ISBN</th>
+        <th>Patron</th>
+        <th>Patron's Role</th>
+        <th>Check Out Date</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {#book_copies}
+    <tr>
+        <td>{serial_num}</td>
+        <td>{?patron_name}{patron_name}{:else}Copy in Library{/patron_name}</td>
+        <td>{?patron_name}{patron_role}{/patron_name}</td>
+        <td>{?patron_name}{time_remaining}{/patron_name}</td>
+        <td>{?patron_name}{/patron_name}</td>
+        <td>
+            {?patron_name}
+            <button class="btn btn-primary">Check In</button>
+            {:else}
+            <button class="btn btn-primary">Check Out</button>
+            {/patron_name}
+            <a href="/books/copies/{id}/delete" class="btn btn-primary">Delete</a>
+        </td>
+    </tr>
+    {/book_copies}
+    </tbody>
+</table>
+{:else}
+No copies at this library
+{/book_copies}

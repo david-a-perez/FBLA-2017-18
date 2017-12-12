@@ -6,11 +6,25 @@
 <body>
 {>"navbar" currentPage="patrons"/}
 <div class="container">
-<h1>Welcome to <strong>Library Manager</strong></h1>
-<a href="/patrons/new">Add new patron</a>
-<br>
-{?patrons}
-<table>
+    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <a href="/patrons/new">Add new patron</a>
+    <br>
+    {?patrons}
+    <div class="row font-weight-bold">
+        <div class="col">Names</div>
+        <div class="col">Role</div>
+        <div class="col">Actions</div>
+    </div>
+    {#patrons}
+    <div class="row table-row">
+        <div class="col">{name}</div>
+        <div class="col">{role}</div>
+        <div class="col actions">
+            <a href="/books/{id}" class="btn btn-primary">More</a>
+        </div>
+    </div>
+    {/patrons}
+{!<table>
     <thead>
     <tr>
         <th>Names</th>
@@ -25,7 +39,7 @@
     </tr>
     {/patrons}
     </tbody>
-</table>
+</table>!}
 {:else}
 Add a patron first
 {/patrons}

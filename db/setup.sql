@@ -31,8 +31,9 @@ CREATE TABLE patrons (
 
 CREATE TABLE book_copies ( -- will be renamed to something that has isbn or similar meaning
     id serial PRIMARY KEY,
-    book serial REFERENCES books ON DELETE CASCADE,
-    patron serial REFERENCES patrons ON DELETE CASCADE, -- change to SET NULL so that table will not delete data on
+    book integer NOT NULL REFERENCES books ON DELETE CASCADE,
+    patron integer NULL REFERENCES patrons ON DELETE SET NULL, -- DEFAULT null, -- change to SET NULL so that table will not delete data on
+    serial_num text,
     checkout_timestamp timestamp,
     user_cookie text REFERENCES users ON DELETE CASCADE
 );
