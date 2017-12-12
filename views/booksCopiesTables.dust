@@ -18,7 +18,7 @@
         <td>{?patron_name}{patron_role}{/patron_name}</td>
         <td>{?patron_name}{time_remaining}{/patron_name}</td>
         <td>{?patron_name}{/patron_name}</td>
-        <td>
+        <td class="actions">
             {?patron_name}
             <button class="btn btn-primary">Check In</button>
             {:else}
