@@ -16,10 +16,15 @@
             <input class="form-control" placeholder="Default: 7" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
             <label for="student_checkout_length">Days students can checkout books</label><br>
             <input class="form-control" placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
-            <input class="form-control" type="submit">
+            <label for="teacher_overdue_fee">Overdue fee for teachers per day</label><br>
+            <input class="form-control" placeholder="Default: 0.25" type="text" name="teacher_overdue_fee" id="teacher_overdue_fee"/><br>
+            <label for="student_overdue_fee">Overdue fee for students per day</label><br>
+            <input class="form-control" placeholder="Default: 0.25" type="text" name="student_overdue_fee" id="student_overdue_fee"><br>
+            <input class="form-control btn btn-primary" type="submit">
         </div>
     </form>
     </div>
+    {>"footer"/}
     {>"bootstrapScripts"/}
 </body>
 </html>

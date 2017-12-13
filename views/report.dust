@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead"/}
+</head>
+<body>
+{>"navbar" currentPage="report"/}
+<div class="container">
+    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <p>Welcome to {library}</p>
+    {?data}
+    <div class="row font-weight-bold">
+        <div class="col">Call Number</div>
+        <div class="col">Names</div>
+        <div class="col">Authors</div>
+        <div class="col">Patrons</div>
+        <div class="col">Patron's Roles</div>
+        <div class="col">Due Date</div>
+        <div class="col">Overdue Fee</div>
+
+
+    </div>
+    {#data}
+    <div class="row table-row">
+        <div class="col">{call_num}</div>
+        <div class="col">{book_name}</div>
+        <div class="col">{author}</div>
+        <div class="col">{?patron_name}{patron_name}{:else}Copy in Library{/patron_name}</div>
+        <div class="col">{patron_role}</div>
+        <div class="col">{due_date}</div>
+        <div class="col">{fees_due}</div>
+
+    </div>
+    {/data}
+    {:else}
+    Add a book first
+    {/data}
+</div>
+{!
+<table class="table">
+    <thead>
+    <tr>
+        <th>Names</th>
+        <th>Author</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {#books}
+    <tr>
+        <td>{name}</td>
+        <td>{author}</td>
+        <td>
+            <!--<button class="table-loader btn btn-primary" type="button">Load copies</button>-->
+            <!--<button class="table-loader btn btn-primary" type="button" data-toggle="collapse" data-target="$(this).parent().parent().next()" aria-expanded="false" aria-controls="$(this).parent().parent().next()">
+                Button with data-target
+            </button>
+            <span class="oi oi-pencil"></span>-->
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookId{id}" aria-expanded="false" aria-controls="bookId{id}">
+                Button with data-target
+            </button>
+            <span style="display: none;">123</span>
+        </td>
+    </tr>
+    <tr id="2bookId{id}" class="collapse">
+        <td colspan="3">Loading...</td>
+    </tr>
+    {/books}
+    </tbody>
+</table>
+{:else}
+Add a book first
+{/books}!}
+{>"footer"/}
+{>"bootstrapScripts"/}
+</body>
+</html>

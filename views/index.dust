@@ -3,13 +3,16 @@
 <head>
     {>"htmlHead"/}
 </head>
-<body>
     {>"navbar" currentPage="index"/}
     <div class="container">
     <h1>{title}</h1>
     <p>Welcome to {title}</p>
     <p>Welcome to {library}</p>
+        <p>To use this program, first add a book and a patron.<br>
+            After doing so you can checkout and return books from the <strong>Books</strong> page by either clicking on <button class="btn btn-primary">Show copies</button> or <button class="btn btn-primary">More</button>
+        </p>
     </div>
+    {>"footer"/}
     {>"bootstrapScripts"/}
 </body>
 </html>

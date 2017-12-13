@@ -21,4 +21,22 @@ router.post('/new', async (req, res, next) => {
     res.redirect('/patrons');
 });
 
+/* GET /patrons/id */
+router.get('/:id', async (req, res, next) => {
+    const sqlResult = await db.query('SELECT * FROM patrons WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id]);
+    res.render('patronsMore', {title: 'Library Manager', library: req.library, patron: sqlResult.rows});
+});
+
+/* POST /patrons/id/editname */
+router.post('/:id/editname', async (req, res, next) => {
+    const sqlResult = await db.query('UPDATE patrons SET name = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.name]);
+    res.redirect(req.originalUrl.replace("/editname", ""));
+});
+
+/* POST /patrons/id/editname */
+router.post('/:id/editrole', async (req, res, next) => {
+    const sqlResult = await db.query('UPDATE patrons SET role = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.role]);
+    res.redirect(req.originalUrl.replace("/editrole", ""));
+});
+
 module.exports = router;

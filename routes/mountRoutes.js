@@ -4,6 +4,8 @@ const users = require('./users');
 const welcome = require('./welcome');
 const books = require('./books');
 const patrons = require('./patrons');
+const report = require('./report');
+const settings = require('./settings');
 
 // JavaScript files that I have written to handle cookies
 const cookieMiddleware = require('./cookie-middleware');
@@ -17,5 +19,7 @@ module.exports = (app) => {
     app.use('/welcome', welcome);
     app.use('/books', books);
     app.use('/patrons', patrons);
+    app.use('/report', report);
+    app.use('/settings', settings);
     app.use('/cookie', cookie);
 };

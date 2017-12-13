@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead"/}
+</head>
+<body>
+{>"navbar"/}
+<div class="container">
+    {#patron}
+    <h4>{name}</h4>
+    <h6 class="text-muted">{role}</h6>
+    <form method="post" action="/patrons/{id}/editname">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Change Patron's Name</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input value="{name}" oninput="$(this).next().children().first().removeClass('disabled');" type="text" class="form-control" id="name" name="name" placeholder="New Name">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary disabled">Change</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form method="post" action="/patrons/{id}/editrole">
+        <div class="form-group row">
+            <label for="role" class="col-sm-2 col-form-label">Change Patron's Role</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <select onchange="$(this).next().children().first().removeClass('disabled');" class="form-control" name="role" id="role" required>
+                        <option value="">-- SELECT --</option>
+                        <option {@eq key=role value="student"}selected{/eq} value="student">Student</option>
+                        <option {@eq key=role value="teacher"}selected{/eq} value="teacher">Teacher</option>
+                    </select>
+                    <!--<input onchange="$(this).next().children().first().removeClass('disabled');" type="text" class="form-control" id="author" name="author" placeholder="New Name">-->
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary disabled">Change</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    {/patron}
+    {!{>"booksCopiesTables" full="true"/}!}
+
+</div>
+{>"footer"/}
+{>"bootstrapScripts"/}
+</body>
+</html>

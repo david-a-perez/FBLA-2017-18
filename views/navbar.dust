@@ -24,20 +24,17 @@
             {>"navbarItem" href="/patrons" display="Patrons"/}
             {/eq}
 
-            {!<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>!}
+            {@eq key=currentPage value="report"}
+            {>"navbarItem" href="/report" display="Report" active="true"/}
+            {:else}
+            {>"navbarItem" href="/report" display="Report"/}
+            {/eq}
+
+            {@eq key=currentPage value="settings"}
+            {>"navbarItem" href="/settings" display="Settings" active="true"/}
+            {:else}
+            {>"navbarItem" href="/settings" display="Settings"/}
+            {/eq}
         </ul>
 
         {!<form class="form-inline my-2 my-lg-0">
