@@ -29,7 +29,7 @@
         </div>
         <div id="bookId{id}" class="row collapse">
             <div class="col">
-                Test Data
+                Loading...
             </div>
         </div>
         {/books}
