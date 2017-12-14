@@ -6,7 +6,7 @@ This website is currently being hosted at http://david-perez-fbla-17-18.herokuap
 However, if you wish to install this on your own computer go to the [Intallation Process](#installation-process) section.
 
 # Installation Process
-1. Install `git` `node` and `npm`
+1. Install `git` `node` and `npm` and `postgres`
 2. Then run the following commands
 ```bash
 git clone https://github.com/Dperez19279/FBLA-2017-18.git

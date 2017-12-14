@@ -6,7 +6,7 @@
 <body>
 {>"navbar" currentPage="patrons"/}
 <div class="container">
-    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <h1>Patrons</h1>
     <p><a href="/patrons/new">Add new patron</a></p>
     <br>
     {?patrons}

@@ -6,8 +6,7 @@
 <body>
 {>"navbar" currentPage="report"/}
 <div class="container">
-    <h1>Welcome to <strong>Library Manager</strong></h1>
-    <p>Welcome to {library}</p>
+    <h1>Report</h1>
     {?data}
     <div class="row font-weight-bold">
         <div class="col">Call Number</div>
@@ -51,11 +50,6 @@
         <td>{name}</td>
         <td>{author}</td>
         <td>
-            <!--<button class="table-loader btn btn-primary" type="button">Load copies</button>-->
-            <!--<button class="table-loader btn btn-primary" type="button" data-toggle="collapse" data-target="$(this).parent().parent().next()" aria-expanded="false" aria-controls="$(this).parent().parent().next()">
-                Button with data-target
-            </button>
-            <span class="oi oi-pencil"></span>-->
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookId{id}" aria-expanded="false" aria-controls="bookId{id}">
                 Button with data-target
             </button>

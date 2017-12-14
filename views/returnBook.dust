@@ -6,7 +6,7 @@
 <body>
 {>"navbar"/}
 <div class="container">
-    <h1>Welcome to <strong>Library Manager</strong></h1>
+    <h1>Return</h1>
     <form method="post">
         {#data}
         <h4>{patron_name} owes {?fees_due}${fees_due}{:else}$0.00{/fees_due} for this book.</h4>

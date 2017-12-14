@@ -32,7 +32,6 @@
                         <option {@eq key=role value="student"}selected{/eq} value="student">Student</option>
                         <option {@eq key=role value="teacher"}selected{/eq} value="teacher">Teacher</option>
                     </select>
-                    <!--<input onchange="$(this).next().children().first().removeClass('disabled');" type="text" class="form-control" id="author" name="author" placeholder="New Name">-->
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary disabled">Change</button>
                     </span>

@@ -2,9 +2,8 @@
 DROP TABLE IF EXISTS users, books, patrons, book_copies CASCADE;
 DROP TYPE IF EXISTS role CASCADE;
 
--- Create ENUMs
+-- Create ENUM to tell if patron is a teacher or a student
 CREATE TYPE role AS ENUM ('teacher','student');
--- CREATE TYPE ___ AS ENUM ('dewey_decimal','author','title','subject'); -- or a opt in checkbox
 
 -- Create tables
 CREATE TABLE users (
@@ -32,10 +31,10 @@ CREATE TABLE patrons (
     user_cookie text NOT NULL REFERENCES users ON DELETE CASCADE
 );
 
-CREATE TABLE book_copies ( -- will be renamed to something that has isbn or similar meaning
+CREATE TABLE book_copies (
     id serial PRIMARY KEY,
     book integer NOT NULL REFERENCES books ON DELETE CASCADE,
-    patron integer NULL REFERENCES patrons ON DELETE SET NULL, -- DEFAULT null, -- change to SET NULL so that table will not delete data on
+    patron integer NULL REFERENCES patrons ON DELETE SET NULL,
     checkout_date date,
     call_num text,
     user_cookie text NOT NULL REFERENCES users ON DELETE CASCADE

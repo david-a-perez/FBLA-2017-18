@@ -6,10 +6,8 @@
 <body>
     {>"navbar" currentPage="books"/}
     <div class="container">
-        <h1>Welcome to <strong>Library Manager</strong></h1>
-        <p>Welcome to {library}</p>
+        <h1>Books</h1>
         <p><a href="/books/new">Add new book</a></p>
-        <br>
         {?books}
         <div class="row font-weight-bold">
             <div class="col">Names</div>

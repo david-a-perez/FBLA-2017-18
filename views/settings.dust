@@ -6,6 +6,7 @@
 <body>
 {>"navbar" currentPage="settings"/}
 <div class="container">
+    <h1>Settings</h1>
     {#settings}
     <form method="post" action="/settings/setteachercheckoutlength">
         <div class="form-group row">
