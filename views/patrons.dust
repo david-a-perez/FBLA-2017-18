@@ -8,7 +8,6 @@
 <div class="container">
     <h1>Patrons</h1>
     <p><a href="/patrons/new">Add new patron</a></p>
-    <br>
     {?patrons}
     <div class="row font-weight-bold">
         <div class="col">Names</div>
