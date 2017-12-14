@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {>"htmlHead"/}
+</head>
+<body>
+{>"navbar"/}
+<div class="container">
+    <h4>Too Many Books Checked Out</h4>
+    <p>Either return a book or leave the current book</p>
+    <a href="/books" class="btn btn-primary">Back</a>
+</div>
+{>"footer"/}
+{>"bootstrapScripts"/}
+</body>
+</html>

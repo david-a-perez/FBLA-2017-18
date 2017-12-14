@@ -13,7 +13,9 @@ CREATE TABLE users (
     teacher_checkout_length integer,
     student_checkout_length integer,
     teacher_overdue_fee decimal,
-    student_overdue_fee decimal
+    student_overdue_fee decimal,
+    teacher_max_books integer,
+    student_max_books integer
 );
 
 CREATE TABLE books (

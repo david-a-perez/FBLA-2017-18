@@ -27,4 +27,14 @@ router.post('/setstudentoverduefee', async (req, res, next) => {
     res.redirect('/settings');
 });
 
+router.post('/setteachermaxbooks', async (req, res, next) => {
+    const sqlResult = await db.query('UPDATE users SET teacher_max_books = $2 WHERE cookie = $1;', [req.sessionId, req.body.teacher_max_books]);
+    res.redirect('/settings');
+});
+
+router.post('/setstudentmaxbooks', async (req, res, next) => {
+    const sqlResult = await db.query('UPDATE users SET student_max_books = $2 WHERE cookie = $1;', [req.sessionId, req.body.student_max_books]);
+    res.redirect('/settings');
+});
+
 module.exports = router;

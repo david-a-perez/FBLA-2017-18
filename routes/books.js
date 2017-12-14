@@ -14,6 +14,11 @@ router.get('/new', (req, res, next) => {
     res.render('booksNew', {title: 'Library Manager', library: req.library});
 });
 
+/* GET /books/tooManyBooks */
+router.get('/tooManyBooks', (req, res, next) => {
+    res.render('tooManyBooks', {title: 'Library Manager', library: req.library});
+});
+
 /* GET /books/id */
 router.get('/:id', async (req, res, next) => {
     const sqlResult = await db.query('SELECT name, author, id FROM books WHERE user_cookie = $1 AND id = $2', [req.sessionId, req.params.id]);
@@ -155,6 +160,15 @@ router.post('/copies/:id/return', async (req, res, next) => {
 });
 
 router.post('/copies/:id/checkout', async (req, res, next) => {
+    const sqlResult1 = await db.query('SELECT CASE WHEN p.role = \'teacher\'::role THEN u.teacher_max_books WHEN p.role = \'student\'::role THEN u.student_max_books END AS max_books FROM patrons p INNER JOIN users u ON p.user_cookie = u.cookie WHERE p.user_cookie = $1 AND p.id = $2;', [req.sessionId, req.body.patron]);
+    const max_books = sqlResult1.rows[0].max_books;
+    const sqlResult3 = await db.query('SELECT COUNT (patron) FROM book_copies WHERE user_cookie = $1 AND patron = $2;', [req.sessionId, req.body.patron]);
+    const count = sqlResult3.rows[0].count;
+    if (max_books > 0) {
+        if (count >= max_books){
+            return res.redirect('/books/tooManyBooks');
+        }
+    }
     const sqlResult = await db.query('UPDATE book_copies SET patron = $3, checkout_date = CURRENT_DATE WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.patron]);
     res.redirect('/books');
 });

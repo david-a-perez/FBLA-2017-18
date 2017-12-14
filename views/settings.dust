@@ -59,29 +59,32 @@
             </div>
         </div>
     </form>
-    <!--<form method="post" action="/books/{id}/editauthor">
+    <form method="post" action="/settings/setteachermaxbooks">
         <div class="form-group row">
-            <label for="author" class="col-sm-2 col-form-label">Change Author's Name</label>
+            <label for="teacher_max_books" class="col-sm-2 col-form-label">Change Teacher Overdue Fee</label>
             <div class="col-sm-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="author" name="author" placeholder="New Name">
+                    <input oninput="$(this).next().children().first().removeClass('disabled');" value="{teacher_max_books}" type="text" class="form-control" id="teacher_max_books" name="teacher_max_books" placeholder="New fee" required>
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary">Change</button>
+                        <button type="submit" class="btn btn-primary disabled">Change</button>
                     </span>
                 </div>
             </div>
         </div>
-    </form>-->
-    <!--<form method="post" action="/books/{id}/new">
+    </form>
+    <form method="post" action="/settings/setstudentmaxbooks">
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Add New Copy</label>
+            <label for="student_max_books" class="col-sm-2 col-form-label">Change Student Overdue Fee</label>
             <div class="col-sm-10">
                 <div class="input-group">
-                    <button type="submit" class="form-control btn btn-primary">Add New Copy</button>
+                    <input oninput="$(this).next().children().first().removeClass('disabled');" value="{student_max_books}" type="text" class="form-control" id="student_max_books" name="student_max_books" placeholder="New fee" required>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary disabled">Change</button>
+                    </span>
                 </div>
             </div>
         </div>
-    </form>-->
+    </form>
     {/settings}
 </div>
 {>"footer"/}

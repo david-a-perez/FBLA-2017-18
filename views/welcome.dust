@@ -16,10 +16,14 @@
             <input class="form-control" placeholder="Default: 7" type="text" name="teacher_checkout_length" id="teacher_checkout_length"/><br>
             <label for="student_checkout_length">Days students can checkout books</label><br>
             <input class="form-control" placeholder="Default: 7" type="text" name="student_checkout_length" id="student_checkout_length"><br>
-            <label for="teacher_overdue_fee">Overdue fee for teachers per day</label><br>
+            <label for="teacher_overdue_fee">Overdue fee for teachers per day (omit $)</label><br>
             <input class="form-control" placeholder="Default: 0.25" type="text" name="teacher_overdue_fee" id="teacher_overdue_fee"/><br>
-            <label for="student_overdue_fee">Overdue fee for students per day</label><br>
+            <label for="student_overdue_fee">Overdue fee for students per day (omit $)</label><br>
             <input class="form-control" placeholder="Default: 0.25" type="text" name="student_overdue_fee" id="student_overdue_fee"><br>
+            <label for="teacher_max_books">Maximum books a teacher can checkout (-1 for unlimited)</label><br>
+            <input class="form-control" placeholder="Default: -1" type="text" name="teacher_max_books" id="teacher_max_books"><br>
+            <label for="student_max_books">Maximum books a teacher can checkout (-1 for unlimited)</label><br>
+            <input class="form-control" placeholder="Default: -1" type="text" name="student_max_books" id="student_max_books"><br>
             <input class="form-control btn btn-primary" type="submit">
         </div>
     </form>
