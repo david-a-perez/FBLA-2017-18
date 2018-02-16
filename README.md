@@ -3,7 +3,9 @@ FBLA Project
 
 This website is currently being hosted at http://david-perez-fbla-17-18.herokuapp.com/
 
-However, if you wish to install this on your own computer go to the [Intallation Process](#installation-process) section.
+It is HIGHLY suggested to use an up-to-date browser such as Google Chrome, Edge, Internet Explorer 10-11, Safari, Opera, or Firefox.
+
+However, if you wish to install this on your own computer go to the [Installation Process](#installation-process) section.
 
 # Installation Process
 1. Install `git` `node` and `npm` and `postgres`
