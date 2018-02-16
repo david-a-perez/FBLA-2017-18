@@ -3,6 +3,7 @@ const db = require('../db/query');
 const router = Router();
 
 router.get('/', async (req, res, next) => {
+    // Get report table
     const sqlResult = await db.query('' +
         'WITH X AS ' +
         '(SELECT c.id AS id, ' +

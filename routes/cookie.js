@@ -2,8 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-/* GET cookie page. */
-router.get('/', function(req, res, next) {
+/* GET /cookie */
+router.get('/', function(req, res) {
     // Verify that sessionId cookie was set
     if (req.cookies['sessionId'] === undefined) {
         // The cookie was not set, the user's browser has cookies disabled

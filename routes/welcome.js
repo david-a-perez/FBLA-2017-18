@@ -2,12 +2,12 @@ const Router = require('express-promise-router');
 const db = require('../db/query');
 const router = Router();
 
-/* GET welcome page. */
+/* GET /welcome */
 router.get('/', function(req, res, next) {
     res.render('welcome');
 });
 
-/* POST welcome page. */
+/* POST /welcome */
 router.post('/', async (req, res, next) => {
     // Save library name, teacher checkout length, and student checkout length to database
     // If length is not defined by user, use default of 7 days

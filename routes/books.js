@@ -4,26 +4,26 @@ const shortid = require('shortid');
 const router = Router();
 
 /* GET /books */
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     // Get list of books
     const sqlResult = await db.query('SELECT * FROM books WHERE user_cookie = $1', [req.sessionId]);
     res.render('books', {title: 'Library Manager', library: req.library, books: sqlResult.rows});
 });
 
 /* GET /books/new */
-router.get('/new', (req, res, next) => {
+router.get('/new', (req, res) => {
     // Provide new book page
     res.render('booksNew', {title: 'Library Manager', library: req.library});
 });
 
 /* GET /books/tooManyBooks */
-router.get('/tooManyBooks', (req, res, next) => {
+router.get('/tooManyBooks', (req, res) => {
     // Respond to error message
     res.render('tooManyBooks', {title: 'Library Manager', library: req.library});
 });
 
 /* GET /books/id */
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res) => {
     // Get book info
     const sqlResult = await db.query('SELECT name, author, id FROM books WHERE user_cookie = $1 AND id = $2', [req.sessionId, req.params.id]);
     // Calculates due fee and date due for given copy and patron
@@ -55,31 +55,32 @@ router.get('/:id', async (req, res, next) => {
         'LEFT OUTER JOIN patrons p ON p.id = c.patron ' +
         'INNER JOIN X x ON x.id = c.id ' +
         'WHERE c.user_cookie = $1 AND b.user_cookie = $1 AND b.id = $2;', [req.sessionId, req.params.id]);
-    console.log(sqlResult2.rows[0].due_date)
     res.render('booksMore', {title: 'Library Manager', library: req.library, book: sqlResult.rows, book_copies: sqlResult2.rows});
 });
 
 /* POST /books/id/new */
-router.post('/:id/new', async (req, res, next) => {
+router.post('/:id/new', async (req, res) => {
     // Add a new copy of a book
-    const sqlResult = await db.query('INSERT INTO book_copies (book, user_cookie, call_num) VALUES ($2, $1, $3);', [req.sessionId, req.params.id, shortid.generate()]);
+    await db.query('INSERT INTO book_copies (book, user_cookie, call_num) VALUES ($2, $1, $3);', [req.sessionId, req.params.id, shortid.generate()]);
     res.redirect(req.originalUrl.replace("/new", ""));
 });
 
 /* POST /books/id/editname */
-router.post('/:id/editname', async (req, res, next) => {
-    const sqlResult = await db.query('UPDATE books SET name = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.name]);
+router.post('/:id/editname', async (req, res) => {
+    // Edit the name of a book
+    await db.query('UPDATE books SET name = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.name]);
     res.redirect(req.originalUrl.replace("/editname", ""));
 });
 
 /* POST /books/id/editauthor */
-router.post('/:id/editauthor', async (req, res, next) => {
-    const sqlResult = await db.query('UPDATE books SET author = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.author]);
+router.post('/:id/editauthor', async (req, res) => {
+    // Edit the author of a book
+    await db.query('UPDATE books SET author = $3 WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.author]);
     res.redirect(req.originalUrl.replace("/editauthor", ""));
 });
 
 /* GET /books/table/id */
-router.get('/table/:id', async (req, res, next) => {
+router.get('/table/:id', async (req, res) => {
     // Calculates due fee and date due for given copy and patron
     const sqlResult = await db.query('' +
         'WITH X AS ' +
@@ -113,14 +114,14 @@ router.get('/table/:id', async (req, res, next) => {
 });
 
 /* GET /books/copies/id/delete */
-router.get('/copies/:id/delete', async (req, res, next) => {
+router.get('/copies/:id/delete', async (req, res) => {
     // Delete a book copy
     const sqlResult = await db.query('DELETE FROM book_copies WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id]);
     res.redirect("back");
 });
 
 /* GET /books/copies/id/checkout */
-router.get('/copies/:id/checkout', async (req, res, next) => {
+router.get('/copies/:id/checkout', async (req, res) => {
     // Get book info
     const sqlResult = await db.query('SELECT c.id AS id, b.name AS name, b.author AS author FROM book_copies c INNER JOIN books b ON b.id = c.book WHERE c.user_cookie = $1 AND b.user_cookie = $1 AND c.id = $2;', [req.sessionId, req.params.id]);
     // Get list of patrons
@@ -129,7 +130,7 @@ router.get('/copies/:id/checkout', async (req, res, next) => {
 });
 
 /* GET /books/copies/id/return */
-router.get('/copies/:id/return', async (req, res, next) => {
+router.get('/copies/:id/return', async (req, res) => {
     // Calculates due fee and date due for given copy and patron
     const sqlResult = await db.query('' +
         'WITH X AS ' +
@@ -161,31 +162,37 @@ router.get('/copies/:id/return', async (req, res, next) => {
 });
 
 /* POST /books/copies/id/return */
-router.post('/copies/:id/return', async (req, res, next) => {
+router.post('/copies/:id/return', async (req, res) => {
     // Return the book
-    const sqlResult = await db.query('UPDATE book_copies SET patron = null, checkout_date = null WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id]);
+    await db.query('UPDATE book_copies SET patron = null, checkout_date = null WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id]);
     res.redirect('/books');
 });
 
 /* POST /books/copies/:id/checkout */
-router.post('/copies/:id/checkout', async (req, res, next) => {
+router.post('/copies/:id/checkout', async (req, res) => {
+    // Checkout a book
+
     // Get maximum number of books
     const sqlResult1 = await db.query('SELECT CASE WHEN p.role = \'teacher\'::role THEN u.teacher_max_books WHEN p.role = \'student\'::role THEN u.student_max_books END AS max_books FROM patrons p INNER JOIN users u ON p.user_cookie = u.cookie WHERE p.user_cookie = $1 AND p.id = $2;', [req.sessionId, req.body.patron]);
+    /** @namespace sqlResult1.rows[0].max_books **/
     const max_books = sqlResult1.rows[0].max_books;
+
     // Count number of books currently checked out by patron
-    const sqlResult3 = await db.query('SELECT COUNT (patron) FROM book_copies WHERE user_cookie = $1 AND patron = $2;', [req.sessionId, req.body.patron]);
-    const count = sqlResult3.rows[0].count;
+    const sqlResult2 = await db.query('SELECT COUNT (patron) FROM book_copies WHERE user_cookie = $1 AND patron = $2;', [req.sessionId, req.body.patron]);
+    const count = sqlResult2.rows[0].count;
+
+    // Compare maximum number of books to books currently checked out
     if (max_books > 0) { // -1 means unlimited
         if (count >= max_books){
-            return res.redirect('/books/tooManyBooks'); // Give user an error message
+            return res.redirect('/books/tooManyBooks'); // Too many books checked out give user an error message
         }
     }
-    const sqlResult = await db.query('UPDATE book_copies SET patron = $3, checkout_date = CURRENT_DATE WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.patron]);
+    await db.query('UPDATE book_copies SET patron = $3, checkout_date = CURRENT_DATE WHERE user_cookie = $1 AND id = $2;', [req.sessionId, req.params.id, req.body.patron]);
     res.redirect('/books');
 });
 
 /* POST /books/new */
-router.post('/new', async (req, res, next) => {
+router.post('/new', async (req, res) => {
     // Insert book into BOOKS table an add a copy in the BOOK_COPIES TABLE
     await db.query('WITH book_id AS (INSERT INTO books(user_cookie, name, author) VALUES ($1, $2, $3) RETURNING id) INSERT INTO book_copies(user_cookie, book, patron, call_num) SELECT $1, id, null, $4 FROM book_id;', [req.sessionId, req.body.name, req.body.author, shortid.generate()]);
     res.redirect('/books');

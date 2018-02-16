@@ -62,7 +62,7 @@
     </form>
     <form method="post" action="/settings/setteachermaxbooks">
         <div class="form-group row">
-            <label for="teacher_max_books" class="col-sm-2 col-form-label">Change Teacher Overdue Fee</label>
+            <label for="teacher_max_books" class="col-sm-2 col-form-label">Change Teacher Maximum Books</label>
             <div class="col-sm-10">
                 <div class="input-group">
                     <input oninput="$(this).next().children().first().removeClass('disabled');" value="{teacher_max_books}" type="text" class="form-control" id="teacher_max_books" name="teacher_max_books" placeholder="New fee" required>
@@ -75,7 +75,7 @@
     </form>
     <form method="post" action="/settings/setstudentmaxbooks">
         <div class="form-group row">
-            <label for="student_max_books" class="col-sm-2 col-form-label">Change Student Overdue Fee</label>
+            <label for="student_max_books" class="col-sm-2 col-form-label">Change Student Maximum Books</label>
             <div class="col-sm-10">
                 <div class="input-group">
                     <input oninput="$(this).next().children().first().removeClass('disabled');" value="{student_max_books}" type="text" class="form-control" id="student_max_books" name="student_max_books" placeholder="New fee" required>

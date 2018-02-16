@@ -37,8 +37,7 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
+// Use routes defined in mountRoutes
 mountRoutes(app);
 
 // catch 404 and forward to error handler

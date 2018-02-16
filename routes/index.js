@@ -1,9 +1,8 @@
 const Router = require('express-promise-router');
-const db = require('../db/query');
 const router = Router();
 
 /* GET home page. */
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     res.render('index', { title: 'Library Manager', library: req.library });
 });
 
